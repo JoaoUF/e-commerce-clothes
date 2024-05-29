@@ -4,4 +4,4 @@ from rest_framework import serializers
 class SizeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Size
-        field = ['id', 'name']
+        fields = ['id', 'name']

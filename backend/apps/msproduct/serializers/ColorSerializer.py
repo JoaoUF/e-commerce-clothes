@@ -4,4 +4,4 @@ from rest_framework import serializers
 class ColorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Color
-        field = ['id', 'name']
+        fields = ['id', 'name']

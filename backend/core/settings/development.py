@@ -10,7 +10,7 @@ WSGI_APPLICATION = 'core.wsgi.development.application'
 DEBUG = bool(int(os.environ.get('DEBUG', '1'))) # type: ignore
 PRODUCTION = int(os.environ.get('PRODUCTION', '0')) # type: ignore
 SECRET_KEY = os.environ.get('SECRET_KEY')
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(' ') # type: ignore
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ') # type: ignore
 CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(' ') # type: ignore
 
 DATABASES = {
