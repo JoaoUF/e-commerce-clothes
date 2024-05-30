@@ -14,3 +14,6 @@ class ProductImage(Model):
         on_delete=models.CASCADE,
         db_column='image'
     )
+
+    class Meta:
+        db_table = 'MAE_PRODUCT_IMAGE'

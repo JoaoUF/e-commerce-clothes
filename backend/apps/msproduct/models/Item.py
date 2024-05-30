@@ -15,6 +15,7 @@ class Item(Model, TimeStampedModel, ActivatorModel):
         Bill,
         on_delete=models.CASCADE,
         db_column='bill',
+        null=True,
     )
     quantity = models.IntegerField(
         db_column='quantity',
