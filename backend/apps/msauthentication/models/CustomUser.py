@@ -10,7 +10,6 @@ from msproduct.models import Bill
 class CustomUser(AbstractUser, PermissionsMixin, ActivatorModel, TimeStampedModel):
     username = None
     email = models.EmailField(_("email address"), unique=True)
-    bill = models.ForeignKey(Bill, on_delete=models.CASCADE)
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

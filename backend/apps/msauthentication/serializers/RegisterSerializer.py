@@ -6,7 +6,7 @@ from django.contrib.auth.password_validation import validate_password
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required = True,
-        validator = [UniqueValidator(queryset=CustomUser.objects.all())] # type: ignore
+        validators = [UniqueValidator(queryset=CustomUser.objects.all())] # type: ignore
     )
     password = serializers.CharField(
         write_only = True,
@@ -32,4 +32,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return attrs
     
     def create(self, validated_data):
-        return CustomUser.objects.create_user(**validated_data) # type: ignore
+        return CustomUser.objects.create_user( # type: ignore
+            email = validated_data['email'],
+            password = validated_data['password']
+        )
