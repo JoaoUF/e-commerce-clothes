@@ -7,7 +7,8 @@ class Model(models.Model):
     id = models.UUIDField(
         _('id'),
         primary_key=True,
-        default=uuid.uuid4()
+        default=uuid.uuid4(),
+        unique=True
     )
 
     class Meta:

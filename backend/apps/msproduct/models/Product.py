@@ -14,4 +14,4 @@ class Product(Model, TimeStampedModel, ActivatorModel, TitleSlugDescriptionModel
         return self.title
 
     class Meta:
-        db_table= 'MAE_PRODUCT',
+        db_table= 'MAE_PRODUCT'

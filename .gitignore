@@ -12,6 +12,7 @@ venv/
 *.pyc
 __pycache__
 db.sqlite3
+mediafields
 
 # PYTHON
 *.py[cod]

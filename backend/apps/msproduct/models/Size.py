@@ -12,4 +12,4 @@ class Size(TimeStampedModel, Model):
         return str(self.id) + self.name
 
     class Meta:
-        db_table= 'MAE_SIZE',
+        db_table= 'MAE_SIZE'

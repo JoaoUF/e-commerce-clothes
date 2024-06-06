@@ -1,9 +1,10 @@
 from .base import *
-from dotenv import load_dotenv
+from dotenv import load_dotenv, dotenv_values
 
 load_dotenv(
     dotenv_path=os.path.join(ENV_DIR, '.env.development')
 )
+
 
 WSGI_APPLICATION = 'core.wsgi.development.application'
 

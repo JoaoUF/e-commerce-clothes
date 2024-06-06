@@ -30,4 +30,4 @@ class Price(TimeStampedModel, Model):
         return str(self.id)
 
     class Meta:
-        db_table= 'MAE_PRICE',
+        db_table= 'MAE_PRICE'

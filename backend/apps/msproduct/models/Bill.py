@@ -12,8 +12,9 @@ class Bill(Model, TimeStampedModel):
     total = models.DecimalField(
         max_digits=19,
         decimal_places=2,
-        db_column='total'
-    )
+        db_column='total',
+        default=0, # type: ignore
+    ) # type: ignore
 
     class Meta:
-        db_table= 'MAE_BILL',
+        db_table= 'MAE_BILL'

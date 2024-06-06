@@ -4,8 +4,8 @@ from django_extensions.db.models import TimeStampedModel, TitleSlugDescriptionMo
 
 class Image(Model, TimeStampedModel, TitleSlugDescriptionModel):
     upload = models.ImageField(
-        upload_to='products/% Y/% m/% d/'
+        upload_to='products/%Y/%m/%d/'
     )
 
     class Meta:
-        db_table= 'MAE_IMAGE',
+        db_table= 'MAE_IMAGE'

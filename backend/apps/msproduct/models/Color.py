@@ -9,7 +9,7 @@ class Color(TimeStampedModel, Model):
     )
 
     def __str__(self) -> str:
-        return str(self.id) + self.name
+        return self.name
 
     class Meta:
-        db_table= 'MAE_COLOR',
+        db_table= 'MAE_COLOR'

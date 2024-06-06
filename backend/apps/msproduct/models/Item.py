@@ -28,4 +28,4 @@ class Item(Model, TimeStampedModel, ActivatorModel):
     )
 
     class Meta:
-        db_table= 'MAE_ITEM',
+        db_table= 'MAE_ITEM'
