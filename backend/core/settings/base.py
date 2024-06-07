@@ -34,6 +34,7 @@ THIRD_PARTY_APPS = [
 PERSONAL_APPS = [
     'msproduct',
     'msauthentication',
+    'msemailmodule',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PERSONAL_APPS

@@ -2,6 +2,7 @@ from rest_framework import serializers
 from msauthentication.models import CustomUser
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
+from msemailmodule.utils.Email import select_subject
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -32,7 +33,13 @@ class RegisterSerializer(serializers.ModelSerializer):
         return attrs
     
     def create(self, validated_data):
-        return CustomUser.objects.create_user( # type: ignore
+        customUser = CustomUser.objects.create_user( # type: ignore
             email = validated_data['email'],
             password = validated_data['password']
         )
+        select_subject(
+            option=1,
+            email=validated_data["email"],
+            custom_user=customUser
+        )
+        return customUser
