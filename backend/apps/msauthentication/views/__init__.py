@@ -1,1 +1,1 @@
-from .CustomUserView import SignUpView, LogoutView, LogoutAllView, LogInView, VefiryEmailView
+from .CustomUserView import SignUpView, LogoutView, LogoutAllView, LogInView, VerifyEmailView

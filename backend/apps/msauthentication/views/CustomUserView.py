@@ -1,6 +1,6 @@
 from django.conf import settings
 import jwt
-from msauthentication.serializers import RegisterSerializer, ChangePasswordSerializer, LogInSerializer
+from msauthentication.serializers import RegisterSerializer, ChangePasswordSerializer, LogInSerializer, VerifyEmailSerializer
 from msauthentication.models import CustomUser
 from rest_framework import generics
 from rest_framework import status
@@ -46,12 +46,14 @@ class LogoutAllView(APIView):
 
         return Response(status=status.HTTP_205_RESET_CONTENT)
 
-class VefiryEmailView(APIView):
+class VerifyEmailView(APIView):
+    serializer_class = VerifyEmailSerializer
     permission_classes = (AllowAny,)
     authentication_classes = ()
 
     def get(self, request):
         token = request.GET.get('access')
+        print('TOKEN', type(token))
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
             customUser = CustomUser.objects.get(id=payload['user_id'])
@@ -63,5 +65,6 @@ class VefiryEmailView(APIView):
                 return Response({'error': 'Already active'}, status=status.HTTP_406_NOT_ACCEPTABLE)
         except jwt.ExpiredSignatureError as identifier:
             return Response({'error': 'Token expired'}, status=status.HTTP_400_BAD_REQUEST)
-        except jwt.exceptions as identfier:
+        except jwt.exceptions.DecodeError as identifier:
+            print('ERROR', identifier)
             return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)

@@ -1,10 +1,12 @@
 ## doto
 
 - [ ] admin honeypot
-- [ ] database replication
+- [ ] add celery for the email module
+- [ ] add database replication
 - [ ] move static file to w3 sockets
 - [ ] add logging file
 - [ ] add internalization
+- [ ] add unit tests
 
 ## resources
 

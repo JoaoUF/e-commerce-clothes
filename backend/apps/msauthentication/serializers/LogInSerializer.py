@@ -1,29 +1,24 @@
-from django.contrib.auth import authenticate
 from rest_framework import exceptions
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from msauthentication.models import CustomUser
 
 
 class LogInSerializer(TokenObtainPairSerializer):
-    username_field = 'email'
-
     def validate(self, attrs):
-        credentials = {
-            'email': attrs.get('email'),
-            'password': attrs.get('password')
-        }
+        try:
+            customUser = CustomUser.objects.get(email=attrs.get('email'))
+            if customUser.check_password(attrs.get('password')): # type: ignore
+                if not customUser.is_verified: # type: ignore
+                    raise exceptions.AuthenticationFailed('User is deactivated')
 
-        user = authenticate(**credentials) # type: ignore
+                data = {}
+                refresh = self.get_token(customUser)
 
-        if user:
-            if not user.is_active:
-                raise exceptions.AuthenticationFailed('User is deactivated')
+                data['refresh'] = str(refresh)
+                data['access'] = str(refresh.access_token) # type: ignore
 
-            data = {}
-            refresh = self.get_token(user)
-
-            data['refresh'] = str(refresh)
-            data['access'] = str(refresh.access_token) # type: ignore
-
-            return data
-        else:
-            raise exceptions.AuthenticationFailed('No active account found with the given credentials')
+                return data
+            else:
+                return 'Incorrect password'
+        except CustomUser.DoesNotExist:
+            return ('This email was not found on the database.')

@@ -1,3 +1,4 @@
 from .ChangePasswordSerializer import ChangePasswordSerializer
 from .RegisterSerializer import RegisterSerializer
 from .LogInSerializer import LogInSerializer
+from .VerifyEmailSerializer import VerifyEmailSerializer
