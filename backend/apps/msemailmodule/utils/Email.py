@@ -1,8 +1,6 @@
-from msauthentication.models import CustomUser
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.conf import settings
-from msemailmodule.models import Template
-from django.core.mail import EmailMessage
+from msemailmodule.tasks.SendMail import send_email
 
 def select_subject(option: int,email: str, custom_user) -> None:
     match option:
@@ -18,12 +16,4 @@ def select_subject(option: int,email: str, custom_user) -> None:
         case 3:
             # correo de verificacion de recibo de compra
             pass
-    send_email(email, html, subject)
-
-def send_email(email: str, html: str, subject: str) -> None:
-    sender = EmailMessage(
-        subject= subject,
-        body= html,
-        to = [email]
-    )
-    sender.send()
+    send_email.delay(email, html, subject)

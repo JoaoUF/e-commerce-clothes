@@ -1,10 +1,10 @@
 ## doto
 
-- [ ] add celery for the email module
 - [ ] add database replication
 - [ ] move static file to w3 sockets
 - [ ] add logging file
 - [ ] add unit tests
+- [ ] add github actions
 
 ## resources
 
