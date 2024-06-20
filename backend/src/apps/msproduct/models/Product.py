@@ -1,5 +1,5 @@
 from django.db import models
-from utils import Model
+from src.utils import Model
 from django_extensions.db.models import TimeStampedModel, ActivatorModel, TitleSlugDescriptionModel
 from .Price import Price
 

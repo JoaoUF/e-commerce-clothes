@@ -28,3 +28,8 @@ mediafields
 
 # MOCKUPS
 trash
+
+# TESTS
+.coverage
+htmlcov/
+.pytest_cache

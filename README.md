@@ -5,6 +5,7 @@
 - [ ] add logging file
 - [ ] add unit tests
 - [ ] add github actions
+- [ ] add redis to apis responses
 
 ## resources
 
