@@ -31,7 +31,8 @@ THIRD_PARTY_APPS = [
     'drf_yasg',
     'admin_honeypot',
     'debug_toolbar',
-    'cachalot'
+    'cachalot',
+    'silk',
 ]
 
 PERSONAL_APPS = [
@@ -49,6 +50,8 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     # corsheaders
     'corsheaders.middleware.CorsMiddleware',
+    # silk
+    'silk.middleware.SilkyMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -59,6 +62,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'core.urls'
 AUTH_USER_MODEL = 'msauthentication.CustomUser'
 SITE_ULT = 1
+LOGIN_URL = '/secret/'
 
 TEMPLATES = [
     {
@@ -182,3 +186,7 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.profiling.ProfilingPanel',
     'cachalot.panels.CachalotPanel',
 ]
+
+# SILKY
+SILKY_AUTHENTICATION = True  # User must login
+SILKY_AUTHORISATION = True  # User must have permissions
