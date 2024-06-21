@@ -1,5 +1,5 @@
 from django.db import models
-from src.utils import Model
+from utils import Model
 from .Product import Product
 from .Image import Image
 

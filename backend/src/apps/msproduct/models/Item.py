@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-from src.utils import Model
+from utils import Model
 from django_extensions.db.models import TimeStampedModel, ActivatorModel
 from .Product import Product
 from .Bill import Bill

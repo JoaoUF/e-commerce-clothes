@@ -1,5 +1,5 @@
 from django.db import models
-from src.utils import Model # type: ignore
+from utils import Model # type: ignore
 from django_extensions.db.models import TimeStampedModel, TitleDescriptionModel
 
 class Template(TimeStampedModel, TitleDescriptionModel, Model):

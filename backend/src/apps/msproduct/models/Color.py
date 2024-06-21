@@ -1,5 +1,5 @@
 from django.db import models
-from src.utils import Model
+from utils import Model
 from django_extensions.db.models import TimeStampedModel
 
 class Color(TimeStampedModel, Model):

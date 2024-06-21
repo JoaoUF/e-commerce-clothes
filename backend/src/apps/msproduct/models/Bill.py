@@ -1,6 +1,6 @@
 from django.db import models
 from msauthentication.models import CustomUser
-from src.utils import Model
+from utils import Model
 from django_extensions.db.models import TimeStampedModel
 
 class Bill(Model, TimeStampedModel):
