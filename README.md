@@ -2,10 +2,10 @@
 
 - [ ] add database replication
 - [ ] move static file to w3 sockets
-- [ ] add logging file
 - [ ] add unit tests
 - [ ] add github actions
 - [ ] add redis to apis responses
+- [ ] add auth2 authentication
 
 ## resources
 

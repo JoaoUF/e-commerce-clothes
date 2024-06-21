@@ -30,6 +30,9 @@ mediafields
 trash
 
 # TESTS
-.coverage
-htmlcov/
 .pytest_cache
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
