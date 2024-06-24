@@ -12,7 +12,7 @@ PRODUCTION = int(os.environ.get('PRODUCTION', '0')) # type: ignore
 SECRET_KEY = os.environ.get('SECRET_KEY')
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ') # type: ignore
 CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(' ') # type: ignore
-INTERNAL_IPS = os.environ.get('INTERNAL_IPS').split(' ') # type: ignore
+INTERNAL_IPS = os.environ.get('INTERNAL_IPS', '').split(' ') # type: ignore
 
 HOST_URL_SITE = os.environ.get('HOST_URL_SITE', 'http://localhost:3030')
 
