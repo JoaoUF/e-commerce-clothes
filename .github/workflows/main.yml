@@ -35,7 +35,7 @@ jobs:
         working-directory: ./backend/src/environment
         run: |
           touch .env.development
-          echo SECRET_KEY=${{secrets.SECRET_KEY}} >> .env.development
+          echo SECRET_KEY="${{secrets.SECRET_KEY}}" >> .env.development
           echo DEBUG=${{secrets.DEBUG}} >> .env.development
           echo ALLOWED_HOSTS=${{secrets.ALLOWED_HOSTS}} >> .env.development
           echo PRODUCTION=${{secrets.PRODUCTION}} >> .env.development
