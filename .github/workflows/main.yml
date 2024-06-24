@@ -31,6 +31,32 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r development.txt
 
+      - name: Create enviroment file
+        working-directory: ./backend/src/environments
+        run: |
+          touch .env.development
+          echo SECRET_KEY=${{secrets.SECRET_KEY}} >> .env.development
+          echo DEBUG=${{secrets.DEBUG}} >> .env.development
+          echo ALLOWED_HOSTS=${{secrets.ALLOWED_HOSTS}} >> .env.development
+          echo PRODUCTION=${{secrets.PRODUCTION}} >> .env.development
+          echo CORS_ALLOWED_ORIGINS=${{secrets.CORS_ALLOWED_ORIGINS}} >> .env.development
+          echo HOST_URL_SITE=${{secrets.HOST_URL_SITE}} >> .env.development
+          echo POSTGRES_DB=${{secrets.POSTGRES_DB}} >> .env.development
+          echo POSTGRES_USER=${{secrets.POSTGRES_USER}} >> .env.development
+          echo POSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}} >> .env.development
+          echo POSTGRES_HOST=${{secrets.POSTGRES_HOST}} >> .env.development
+          echo POSTGRES_PORT=${{secrets.POSTGRES_PORT}} >> .env.development
+          echo EMAIL_USE_TLS=${{secrets.EMAIL_USE_TLS}} >> .env.development
+          echo EMAIL_HOST=${{secrets.EMAIL_HOST}} >> .env.development
+          echo EMAIL_PORT=${{secrets.EMAIL_PORT}} >> .env.development
+          echo EMAIL_HOST_USER=${{secrets.EMAIL_HOST_USER}} >> .env.development
+          echo EMAIL_HOST_PASSWORD=${{secrets.EMAIL_HOST_PASSWORD}} >> .env.development
+          echo RABBIT_USER=${{secrets.RABBIT_USER}} >> .env.development
+          echo RABBIT_PASSWORD=${{secrets.RABBIT_PASSWORD}} >> .env.development
+          echo RABBIT_HOST=${{secrets.RABBIT_HOST}} >> .env.development
+          echo REDIS_LOCATION=${{secrets.REDIS_LOCATION}} >> .env.development
+          echo INTERNAL_IPS=${{secrets.INTERNAL_IPS}} >> .env.development
+
       - name: Run Tests
         working-directory: ./backend
         run: pytest
