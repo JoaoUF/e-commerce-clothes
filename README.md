@@ -5,6 +5,7 @@
 - [ ] add github actions
 - [ ] add auth2 authentication
 - [ ] dockerize application
+
 - [ ] test api & cache with toolbar
 
 ## resources
@@ -30,3 +31,8 @@ Honeypot:
 Rabbitmq and celery:
 
 - https://github.com/alaisgomes/celery_template
+
+Performance with drf:
+
+- https://loadforge.com/guides/optimizing-django-rest-framework-10-essential-packages
+- https://medium.com/@tarekeesa7/optimal-performance-django-rest-framework-packages-1504963b94a4
