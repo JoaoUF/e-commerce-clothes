@@ -1,20 +1,22 @@
 name: Quality Assurance
-on:
-  push:
-    branches: [main]
+on: [push]
 
 jobs:
   build_and_test:
     name: Build and test
     runs-on: ubuntu-latest
 
-    # services:
-    #   db:
-    #     image: postgres:14.2-alpine
-    #   env:
-    #     POSTGRES_DB: demo
-    #     POSTGRES_USER: demo
-    #     POSTGRES_PASSWORD: demo
+    services:
+      postgres10:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: ${{secret.POSTGRES_DB}}
+          POSTGRES_USER: ${{secret.POSTGRES_USER}}
+          POSTGRES_PASSWORD: ${{secret.POSTGRES_PASSWORD}}
+          POSTGRES_HOST: ${{secret.POSTGRES_HOST}}
+        ports:
+          - 5432: ${{secret.POSTGRES_PORT}}
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - name: Checkout Code
@@ -56,6 +58,12 @@ jobs:
           echo RABBIT_HOST=${{secrets.RABBIT_HOST}} >> .env.development
           echo REDIS_LOCATION=${{secrets.REDIS_LOCATION}} >> .env.development
           echo INTERNAL_IPS=${{secrets.INTERNAL_IPS}} >> .env.development
+
+      - name: Run migrations
+        working-directory: ./backend/src
+        run: |
+          python manage.py makemigrations
+          python manage.py migrate
 
       - name: Run Tests
         working-directory: ./backend
