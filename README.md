@@ -1,12 +1,16 @@
-## doto
+## doto dev
 
-- [ ] add database replication
-- [ ] move static file to w3 sockets
-- [ ] add github actions
 - [ ] add auth2 authentication
-- [ ] dockerize application
-
 - [ ] test api & cache with toolbar
+- [ ] add a rate limit
+- [ ] add stipe api
+
+## doto prod
+
+- [ ] dockerize application
+- [ ] move static file to w3 sockets
+- [ ] add database replication
+- [ ] add github actions
 
 ## resources
 
@@ -23,6 +27,8 @@ Custom authentication with jwt:
 - https://medium.com/codex/django-rest-framework-custom-jwt-authentication-backend-17bbd178b4fd
 - https://medium.com/django-rest/logout-django-rest-framework-eb1b53ac6d35
 - https://stackoverflow.com/questions/53480770/how-to-return-custom-data-with-access-and-refresh-tokens-to-identify-users-in-dj
+- https://medium.com/geekculture/jwt-authentication-in-django-part-1-implementing-the-backend-b7c58ab9431b
+- https://dev.to/jkaylight/django-rest-framework-authentication-with-dj-rest-auth-4kli
 
 Honeypot:
 
@@ -36,3 +42,7 @@ Performance with drf:
 
 - https://loadforge.com/guides/optimizing-django-rest-framework-10-essential-packages
 - https://medium.com/@tarekeesa7/optimal-performance-django-rest-framework-packages-1504963b94a4
+
+S3 socker:
+
+- https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/
