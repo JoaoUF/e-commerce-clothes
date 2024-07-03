@@ -1,1 +1,0 @@
-from .TemplateView import TemplateDetail, TemplateList

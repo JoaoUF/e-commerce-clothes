@@ -2,9 +2,10 @@ from django.db import models
 from utils import Model
 from django_extensions.db.models import TimeStampedModel
 
+
 class Color(TimeStampedModel, Model):
     name = models.CharField(
-        db_column='name',
+        db_column="name",
         max_length=50,
     )
 
@@ -12,4 +13,4 @@ class Color(TimeStampedModel, Model):
         return self.name
 
     class Meta:
-        db_table= 'MAE_COLOR'
+        db_table = "MAE_COLOR"

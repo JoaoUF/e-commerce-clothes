@@ -26,9 +26,6 @@ mediafields
 !.vscode/extensions.json 
 .history
 
-# MOCKUPS
-trash
-
 # TESTS
 .pytest_cache
 htmlcov/

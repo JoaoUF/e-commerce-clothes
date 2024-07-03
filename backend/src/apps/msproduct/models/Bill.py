@@ -3,18 +3,15 @@ from msauthentication.models import CustomUser
 from utils import Model
 from django_extensions.db.models import TimeStampedModel
 
+
 class Bill(Model, TimeStampedModel):
-    user = models.ForeignKey(
-        CustomUser,
-        on_delete=models.CASCADE,
-        db_column='user'
-    )
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, db_column="user")
     total = models.DecimalField(
         max_digits=19,
         decimal_places=2,
-        db_column='total',
-        default=0, # type: ignore
-    ) # type: ignore
+        db_column="total",
+        default=0,  # type: ignore
+    )  # type: ignore
 
     class Meta:
-        db_table= 'MAE_BILL'
+        db_table = "MAE_BILL"
