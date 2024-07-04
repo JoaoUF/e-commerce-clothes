@@ -13,7 +13,7 @@ from dj_rest_auth.views import (
 )
 from dj_rest_auth.jwt_auth import get_refresh_view
 from rest_framework_simplejwt.views import TokenVerifyView
-from .views import password_reset_confirm_redirect, email_confirm_redirect
+from .views import password_reset_confirm_redirect, email_confirm_redirect, GoogleLogin
 
 urlpatterns = [
     path("register/", RegisterView.as_view(), name="rest_register"),
@@ -47,4 +47,5 @@ urlpatterns = [
     path("user/", UserDetailsView.as_view(), name="rest_user_details"),
     path("token/verify/", TokenVerifyView.as_view(), name="token_verify"),
     path("token/refresh/", get_refresh_view().as_view(), name="token_refresh"),
+    path("google/", GoogleLogin.as_view(), name="google_login"),
 ]

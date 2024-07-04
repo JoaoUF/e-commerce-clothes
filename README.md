@@ -1,8 +1,5 @@
 ## doto dev
 
-- [ ] test api & cache with toolbar
-- [ ] add auth2 authentication with google
-- [ ] add a rate limit with drf (probably with django-allauth)
 - [ ] add celery to django-allauth
 - [ ] add stipe api
 
@@ -31,6 +28,7 @@ Custom authentication with jwt:
 - https://medium.com/geekculture/jwt-authentication-in-django-part-1-implementing-the-backend-b7c58ab9431b
 - https://dev.to/jkaylight/django-rest-framework-authentication-with-dj-rest-auth-4kli
 - https://testdriven.io/blog/django-rest-auth/
+- https://testdriven.io/blog/django-rest-authjs/#frontend
 
 Honeypot:
 

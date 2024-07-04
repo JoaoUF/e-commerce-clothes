@@ -4,14 +4,12 @@ from dotenv import load_dotenv, dotenv_values
 load_dotenv(dotenv_path=os.path.join(ENV_DIR, ".env.development"))
 
 WSGI_APPLICATION = "core.wsgi.development.application"
-
 DEBUG = bool(int(os.environ.get("DEBUG", "1")))  # type: ignore
 PRODUCTION = int(os.environ.get("PRODUCTION", "0"))  # type: ignore
 SECRET_KEY = os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")  # type: ignore
 CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "").split(" ")  # type: ignore
 INTERNAL_IPS = os.environ.get("INTERNAL_IPS", "").split(" ")  # type: ignore
-
 HOST_URL_SITE = os.environ.get("HOST_URL_SITE", "http://localhost:3030")
 
 # DATABASES
@@ -39,8 +37,8 @@ RABBIT_PASSWORD = os.environ.get("RABBIT_PASSWORD")
 RABBIT_HOST = os.environ.get("RABBIT_HOST")
 
 # CELERY
-# BROKER_URL = f"amqp://{RABBIT_USER}:{RABBIT_PASSWORD}@localhost:5672/{RABBIT_HOST}"
-BROKER_URL = "amqp://joao:medussa@localhost:5672/myhost"
+BROKER_URL = f"amqp://{RABBIT_USER}:{RABBIT_PASSWORD}@localhost:5672/{RABBIT_HOST}"
+# BROKER_URL = "amqp://joao:medussa@localhost:5672/myhost"
 CELERY_RESULT_BACKEND = "amqp://localhost:5672"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
@@ -57,7 +55,7 @@ CACHES = {
     }
 }
 
-# STATIC FILE CONGIF
+# STATIC FILE
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     os.path.join(BASE_DIR, "media"),
@@ -68,3 +66,22 @@ MEDIA_URL = "/media/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfields")
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafields")
+
+# DJANGO REST AUTH
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "APP": {
+            "client_id": os.environ.get("SOCIALACCOUNT_GOOGLE_CLIENT_ID"),
+            "secret": os.environ.get("SOCIALACCOUNT_GOOGLE_CLIENT_ID"),
+            "key": "",
+        },
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+        "VERIFIED_EMAIL": True,
+    },
+}
