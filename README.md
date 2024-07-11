@@ -1,7 +1,7 @@
 ## doto dev
 
-- [ ] add celery to django-allauth
-- [ ] add stipe api
+- [ ] add admin panels
+- [ ] work dj-rest-auth email sending with celery and pickle
 
 ## doto prod
 
@@ -46,3 +46,9 @@ Performance with drf:
 S3 socker:
 
 - https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/
+
+Payments:
+
+- https://betterprogramming.pub/how-to-integrate-django-react-app-with-stripe-payments-95709b3f23e5
+- https://aisaastemplate.com/blog/django-stripe-integration/#implementing-stripe-checkout-in-django
+- https://episyche.com/blog/how-to-integrate-stripe-payment-gateway-in-django-and-react-for-the-checkout-use-case

@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import timedelta
 import os
 import sys
+import stripe
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 APPS_DIR = os.path.join(BASE_DIR, "apps")
@@ -47,6 +48,7 @@ THIRD_PARTY_APPS = [
 PERSONAL_APPS = [
     "msproduct",
     "msauthentication",
+    "mspayment",
 ]
 
 DJANGO_MIDDLEWARE = [
@@ -138,10 +140,7 @@ REST_FRAMEWORK = {
         "rest_framework.throttling.AnonRateThrottle",
         "rest_framework.throttling.UserRateThrottle",
     ],
-    "DEFAULT_THROTTLE_RATES": {
-        "anon": "100/day", 
-        "user": "1000/day"
-    },
+    "DEFAULT_THROTTLE_RATES": {"anon": "100/day", "user": "1000/day"},
     "DEFAULT_CONTENT_NEGOTIATION_CLASS": "rest_framework.negotiation.DefaultContentNegotiation",
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.openapi.AutoSchema",
     "DEFAULT_FILTER_BACKENDS": [
@@ -221,6 +220,7 @@ REST_AUTH = {
     "PASSWORD_RESET_SERIALIZER": "dj_rest_auth.serializers.PasswordResetSerializer",
     "PASSWORD_RESET_CONFIRM_SERIALIZER": "dj_rest_auth.serializers.PasswordResetConfirmSerializer",
     "PASSWORD_CHANGE_SERIALIZER": "dj_rest_auth.serializers.PasswordChangeSerializer",
+    # "REGISTER_SERIALIZER": "msauthentication.serializers.MyRegisterSerializer",
     "REGISTER_SERIALIZER": "dj_rest_auth.registration.serializers.RegisterSerializer",
     "REGISTER_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
     "TOKEN_MODEL": "rest_framework.authtoken.models.Token",

@@ -25,6 +25,7 @@ urlpatterns = [
     path("secret/", admin.site.urls),
     path("api/v1/", include("apps.msproduct.urls")),
     path("api/v1/", include("apps.msauthentication.urls")),
+    path("api/v1/", include("apps.mspayment.urls")),
     path(
         "swagger<format>/", schema_view.without_ui(cache_timeout=0), name="schema-json"
     ),

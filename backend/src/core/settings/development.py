@@ -43,6 +43,8 @@ CELERY_RESULT_BACKEND = "amqp://localhost:5672"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
+# CELERY_ACCEPT_CONTENT = ["json", "pickle"]
+# CELERY_TASK_SERIALIZER = "pickle"
 
 # CACHE
 CACHES = {
@@ -85,3 +87,8 @@ SOCIALACCOUNT_PROVIDERS = {
         "VERIFIED_EMAIL": True,
     },
 }
+
+# STRIPE
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
+stripe.api_key = STRIPE_SECRET_KEY
