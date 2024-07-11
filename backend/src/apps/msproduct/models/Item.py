@@ -17,7 +17,6 @@ class Item(Model, TimeStampedModel, ActivatorModel):
     quantity = models.IntegerField(
         db_column="quantity", validators=[MinValueValidator(1)]
     )
-    total = models.DecimalField(max_digits=19, decimal_places=2, db_column="total")
 
     class Meta:
         db_table = "MAE_ITEM"

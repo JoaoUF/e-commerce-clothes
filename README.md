@@ -1,7 +1,7 @@
 ## doto dev
 
-- [ ] add admin panels
 - [ ] work dj-rest-auth email sending with celery and pickle
+- [ ] review pagination
 
 ## doto prod
 
