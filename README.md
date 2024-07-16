@@ -1,7 +1,8 @@
 ## doto dev
 
-- [ ] add trigger after registration
-- [ ] create signals file
+- [ ] set up frontend and folder structure
+- [ ] commit
+- [ ] download packages
 
 ## doto prod
 
@@ -11,10 +12,6 @@
 - [ ] add github actions
 
 ## resources
-
-Folder structure:
-
-- https://saasitive.com/tutorial/django-celery-redis-postgres-docker-compose/
 
 Database replication:
 
@@ -52,3 +49,8 @@ Payments:
 - https://betterprogramming.pub/how-to-integrate-django-react-app-with-stripe-payments-95709b3f23e5
 - https://aisaastemplate.com/blog/django-stripe-integration/#implementing-stripe-checkout-in-django
 - https://episyche.com/blog/how-to-integrate-stripe-payment-gateway-in-django-and-react-for-the-checkout-use-case
+
+Production:
+
+- https://saasitive.com/tutorial/docker-compose-django-react-nginx-let-s-encrypt/
+- https://saasitive.com/tutorial/django-celery-redis-postgres-docker-compose/
