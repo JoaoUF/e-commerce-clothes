@@ -45,3 +45,21 @@ class CreateCkeckoutView(APIView):
             return Response(checkout_sesion, status=status.HTTP_200_OK)
         except Exception as e:
             return e
+
+
+class CreateCheckoutSimpleView(APIView):
+
+    def post(self, request, pk):
+        item_list = Item.objects.filter(bill=pk)
+
+        if len(item_list) == 0:
+            return Response(
+                {"message": "No tiene productos en su carrito de compras"},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        current_bill = Bill.objects.get(id=pk)
+        total_amount = sum([i.get_price() * i.quantity for i in item_list])
+        current_bill.total = total_amount
+        current_bill.save()
+        return Response({"message": "Successful payment"}, status=status.HTTP_200_OK)

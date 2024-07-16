@@ -38,13 +38,10 @@ RABBIT_HOST = os.environ.get("RABBIT_HOST")
 
 # CELERY
 BROKER_URL = f"amqp://{RABBIT_USER}:{RABBIT_PASSWORD}@localhost:5672/{RABBIT_HOST}"
-# BROKER_URL = "amqp://joao:medussa@localhost:5672/myhost"
 CELERY_RESULT_BACKEND = "amqp://localhost:5672"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
-# CELERY_ACCEPT_CONTENT = ["json", "pickle"]
-# CELERY_TASK_SERIALIZER = "pickle"
 
 # CACHE
 CACHES = {

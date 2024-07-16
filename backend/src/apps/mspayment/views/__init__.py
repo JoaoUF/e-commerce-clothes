@@ -1,1 +1,1 @@
-from .CreateCkeckoutView import CreateCkeckoutView
+from .CreateCkeckoutView import CreateCkeckoutView, CreateCheckoutSimpleView

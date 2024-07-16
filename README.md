@@ -1,7 +1,7 @@
 ## doto dev
 
-- [ ] work dj-rest-auth email sending with celery and pickle
-- [ ] review pagination
+- [ ] add trigger after registration
+- [ ] create signals file
 
 ## doto prod
 

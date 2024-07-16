@@ -18,5 +18,8 @@ class Item(Model, TimeStampedModel, ActivatorModel):
         db_column="quantity", validators=[MinValueValidator(1)]
     )
 
+    def get_price(self):
+        return self.product.price.discountPrice
+
     class Meta:
         db_table = "MAE_ITEM"

@@ -1,1 +1,0 @@
-from .MyRegisterSerializer import MyRegisterSerializer

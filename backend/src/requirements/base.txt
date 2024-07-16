@@ -19,7 +19,8 @@ django-cachalot==2.6.2
 django-redis==5.4.0
 django-silk==5.1.0
 django-allauth==0.63.3
-django-allauth[socialaccount]
+django-allauth[socialaccount]==0.63.3
 dj-rest-auth==6.0.0
 black==24.4.2
 stripe==10.2.0
+django-celery-email==3.0.0

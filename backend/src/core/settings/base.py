@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount.providers.google",
     "dj_rest_auth",
     "dj_rest_auth.registration",
+    "djcelery_email",
 ]
 
 PERSONAL_APPS = [
@@ -107,6 +108,8 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
+EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
+
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PERSONAL_APPS
 MIDDLEWARE = DJANGO_MIDDLEWARE + THIRD_PARTY_MIDDLEWARE + PERSONAL_MIDDLEWARE
 ROOT_URLCONF = "core.urls"
@@ -119,6 +122,12 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# DJ CELERY EMAIL
+CELERY_EMAIL_TASK_CONFIG = {
+    "name": "djcelery_email_send",
+    "ignore_result": False,
+}
 
 # DJANGO REST FRAMEWORK
 # DEFAULT - https://www.django-rest-framework.org/api-guide/settings/
@@ -133,19 +142,18 @@ REST_FRAMEWORK = {
         "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
-        # "rest_framework.permissions.AllowAny",
         "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.AnonRateThrottle",
         "rest_framework.throttling.UserRateThrottle",
     ],
-    "DEFAULT_THROTTLE_RATES": {"anon": "100/day", "user": "1000/day"},
-    "DEFAULT_CONTENT_NEGOTIATION_CLASS": "rest_framework.negotiation.DefaultContentNegotiation",
-    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.openapi.AutoSchema",
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
     ],
+    "DEFAULT_THROTTLE_RATES": {"anon": "100/day", "user": "1000/day"},
+    "DEFAULT_CONTENT_NEGOTIATION_CLASS": "rest_framework.negotiation.DefaultContentNegotiation",
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
 }
 
@@ -220,7 +228,6 @@ REST_AUTH = {
     "PASSWORD_RESET_SERIALIZER": "dj_rest_auth.serializers.PasswordResetSerializer",
     "PASSWORD_RESET_CONFIRM_SERIALIZER": "dj_rest_auth.serializers.PasswordResetConfirmSerializer",
     "PASSWORD_CHANGE_SERIALIZER": "dj_rest_auth.serializers.PasswordChangeSerializer",
-    # "REGISTER_SERIALIZER": "msauthentication.serializers.MyRegisterSerializer",
     "REGISTER_SERIALIZER": "dj_rest_auth.registration.serializers.RegisterSerializer",
     "REGISTER_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
     "TOKEN_MODEL": "rest_framework.authtoken.models.Token",
@@ -230,7 +237,7 @@ REST_AUTH = {
     "LOGOUT_ON_PASSWORD_CHANGE": False,
     "SESSION_LOGIN": True,
     "USE_JWT": True,
-    "JWT_AUTH_COOKIE": "my-auth",
+    # "JWT_AUTH_COOKIE": "my-token",
     "JWT_AUTH_REFRESH_COOKIE": "my-refresh-token",
     "JWT_AUTH_REFRESH_COOKIE_PATH": "/",
     "JWT_AUTH_SECURE": True,
