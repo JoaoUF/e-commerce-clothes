@@ -1,5 +1,6 @@
 from msproduct.models import Item
 from msproduct.serializers import ItemSerializer, ItemDetailSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 
 
@@ -16,4 +17,5 @@ class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
 class ItemDetailList(generics.ListAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemDetailSerializer
-    search_fields = ["price"]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["bill"]

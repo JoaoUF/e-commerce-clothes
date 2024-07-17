@@ -11,3 +11,11 @@ class BillList(generics.ListCreateAPIView):
 class BillDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bill.objects.all()
     serializer_class = BillSerializer
+
+
+class BillSingle(generics.RetrieveAPIView):
+    serializer_class = BillSerializer
+
+    def get_object(self):
+        obj = Bill.objects.get(user=self.kwargs["user"], total=0)
+        return obj

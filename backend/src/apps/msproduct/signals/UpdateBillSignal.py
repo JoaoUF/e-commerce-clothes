@@ -5,7 +5,6 @@ from django.dispatch import receiver
 
 @receiver(post_save, sender=Bill)
 def create_new_bill_after_checkout(sender, instance, created, weak=False, **kwargs):
-    print("SEGUNDO SIGNAL")
     if not created:
         new_bill = Bill(user=instance.user)
         new_bill.save()
