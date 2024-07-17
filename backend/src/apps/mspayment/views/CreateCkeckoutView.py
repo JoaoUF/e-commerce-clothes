@@ -24,27 +24,27 @@ class CreateCkeckoutView(APIView):
     def post(self, request, pk):
         item_list = Item.objects.filter(bill=pk)
         my_line_items = []
-        for item in item_list:
-            product = Product.objects.get(id=item.product.id)
-            price = Price.objects.get(id=product.price.id)
-            my_line_items.append(
-                product_dict(
-                    product_name=product.title,
-                    product_price=price.originalPrice,
-                    product_amount=item.quantity,
-                )
-            )
-        try:
-            checkout_sesion = stripe.checkout.Session.create(
-                line_items=my_line_items,
-                mode="payment",
-            )
-            new_bill = Bill.objects.get(id=pk)
-            new_bill.total = checkout_sesion.amount_total
-            new_bill.save()
-            return Response(checkout_sesion, status=status.HTTP_200_OK)
-        except Exception as e:
-            return e
+        # for item in item_list:
+        #     product = Product.objects.get(id=item.product.id)
+        #     price = Price.objects.get(id=product.price.id)
+        #     my_line_items.append(
+        #         product_dict(
+        #             product_name=product.title,
+        #             product_price=price.originalPrice,
+        #             product_amount=item.quantity,
+        #         )
+        #     )
+        # try:
+        #     checkout_sesion = stripe.checkout.Session.create(
+        #         line_items=my_line_items,
+        #         mode="payment",
+        #     )
+        #     new_bill = Bill.objects.get(id=pk)
+        #     new_bill.total = checkout_sesion.amount_total
+        #     new_bill.save()
+        #     return Response(checkout_sesion, status=status.HTTP_200_OK)
+        # except Exception as e:
+        #     return e
 
 
 class CreateCheckoutSimpleView(APIView):
@@ -59,7 +59,7 @@ class CreateCheckoutSimpleView(APIView):
             )
 
         current_bill = Bill.objects.get(id=pk)
-        total_amount = sum([i.get_price() * i.quantity for i in item_list])
+        total_amount = sum([i.price.discountPrice * i.quantity for i in item_list])
         current_bill.total = total_amount
         current_bill.save()
         return Response({"message": "Successful payment"}, status=status.HTTP_200_OK)

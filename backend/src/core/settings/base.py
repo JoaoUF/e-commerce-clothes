@@ -237,7 +237,7 @@ REST_AUTH = {
     "LOGOUT_ON_PASSWORD_CHANGE": False,
     "SESSION_LOGIN": True,
     "USE_JWT": True,
-    # "JWT_AUTH_COOKIE": "my-token",
+    "JWT_AUTH_COOKIE": "my-token",
     "JWT_AUTH_REFRESH_COOKIE": "my-refresh-token",
     "JWT_AUTH_REFRESH_COOKIE_PATH": "/",
     "JWT_AUTH_SECURE": True,
