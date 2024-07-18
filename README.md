@@ -1,8 +1,8 @@
 ## doto dev
 
-- [ ] set up frontend and folder structure
-- [ ] commit
-- [ ] download packages
+- [ ] finish services endpoints
+- [ ] set up urls
+- [ ] set up context and security
 
 ## doto prod
 

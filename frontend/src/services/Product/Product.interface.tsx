@@ -5,5 +5,4 @@ export interface Product {
   title: string;
   description: string;
   slug: string;
-  price: UUID;
 }
