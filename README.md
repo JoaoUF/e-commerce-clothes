@@ -1,7 +1,6 @@
 ## doto dev
 
-- [ ] finish services endpoints
-- [ ] set up urls
+- [ ] change backend refresh token expiration time?
 - [ ] set up context and security
 
 ## doto prod
