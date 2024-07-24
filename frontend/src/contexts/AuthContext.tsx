@@ -1,4 +1,5 @@
-import { Context, createContext, useEffect, useState } from "react";
+import { UUID } from "crypto";
+import { createContext, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import {
@@ -11,20 +12,19 @@ import { BillService } from "../services/Bill/Bill.service";
 
 interface ContextProps {
   user: number | null;
+  card: UUID | null;
   loginUser: (data: SignIn) => Promise<void>;
   logoutUser: () => void;
 }
 
-const AuthContext = createContext<ContextProps | null>(
-  null
-) as Context<ContextProps>;
+const AuthContext = createContext<ContextProps | null>(null);
 
 export default AuthContext;
 
 export const AuthProvider = () => {
   let { card, updateCard, deleteCard } = useLocalStorage();
   let [user, setUser] = useState<number | null>(null);
-  let [loading, setLoading] = useState<boolean>(false);
+  let [loading, setLoading] = useState<boolean>(true);
   const history = useNavigate();
 
   let loginUser = async (data: SignIn) => {
@@ -59,7 +59,7 @@ export const AuthProvider = () => {
     }
 
     if (loading) {
-      updateToken();
+      setLoading(false);
     }
   };
 
@@ -83,6 +83,7 @@ export const AuthProvider = () => {
 
   let contextProps: ContextProps = {
     user: user,
+    card: card,
     loginUser: loginUser,
     logoutUser: logoutUser,
   };
