@@ -25,12 +25,12 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
     "django_filters",
-    "corsheaders",
     "django_extensions",
     "drf_yasg",
     "admin_honeypot",
@@ -54,8 +54,8 @@ PERSONAL_APPS = [
 
 DJANGO_MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -243,7 +243,7 @@ REST_AUTH = {
     "JWT_AUTH_SECURE": True,
     "JWT_AUTH_HTTPONLY": True,
     "JWT_AUTH_SAMESITE": "None",
-    "JWT_AUTH_RETURN_EXPIRATION": False,
+    "JWT_AUTH_RETURN_EXPIRATION": True,
     "JWT_AUTH_COOKIE_USE_CSRF": False,
     "JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED": False,
 }

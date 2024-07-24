@@ -17,10 +17,13 @@ export class AuthenticationService {
     return AxiosConfig.post("verify-email/", data).catch((error) => error.data);
   }
 
-  refresh_token(): Promise<RefreshToken> {
-    return AxiosConfig.post("token/refresh/").then(
-      (response: AxiosResponse<RefreshToken>) => response.data
-    );
+  refresh_token(): Promise<RefreshToken | void> {
+    return AxiosConfig.post("token/refresh/")
+      .then((response: AxiosResponse<RefreshToken>) => response.data)
+      .catch((error) => {
+        console.log("ERROR REFRESH");
+        console.log(error.message);
+      });
   }
 
   login(data: SignIn): Promise<SignInOutput> {

@@ -7,10 +7,14 @@ WSGI_APPLICATION = "core.wsgi.development.application"
 DEBUG = bool(int(os.environ.get("DEBUG", "1")))  # type: ignore
 PRODUCTION = int(os.environ.get("PRODUCTION", "0"))  # type: ignore
 SECRET_KEY = os.environ.get("SECRET_KEY")
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "http://localhost:3000").split(" ")  # type: ignore
-CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:3000").split(" ")  # type: ignore
-INTERNAL_IPS = os.environ.get("INTERNAL_IPS", "").split(" ")  # type: ignore
-HOST_URL_SITE = os.environ.get("HOST_URL_SITE", "http://localhost:3000")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")  # type: ignore
+# CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS").split(" ")  # type: ignore
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+CORS_ALLOW_CREDENTIALS = True
+INTERNAL_IPS = os.environ.get("INTERNAL_IPS").split(" ")  # type: ignore
+HOST_URL_SITE = os.environ.get("HOST_URL_SITE")
 
 # DATABASES
 DATABASES = {

@@ -14,16 +14,14 @@ export default function App() {
         {
           path: "/",
           element: <LandingPage />,
-          children: [
-            {
-              path: "signin",
-              element: <SignIn />,
-            },
-            {
-              path: "signup",
-              element: <SignUp />,
-            },
-          ],
+        },
+        {
+          path: "/signin",
+          element: <SignIn />,
+        },
+        {
+          path: "/signup",
+          element: <SignUp />,
         },
         {
           path: "/",

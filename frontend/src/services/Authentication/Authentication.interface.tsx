@@ -24,6 +24,8 @@ export interface SignInOutput {
   access: string;
   refresh: string;
   user: User;
+  access_expiration: Date;
+  access_refresh: Date;
 }
 
 export interface RefreshToken {
