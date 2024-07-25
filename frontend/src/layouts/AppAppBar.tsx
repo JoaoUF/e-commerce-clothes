@@ -10,9 +10,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 function AppAppBar() {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -77,6 +79,9 @@ function AppAppBar() {
                 component="a"
                 target="_blank"
                 startIcon={<ShoppingCartIcon />}
+                onClick={() => {
+                  navigate("/card");
+                }}
               >
                 Card
               </Button>
@@ -86,6 +91,9 @@ function AppAppBar() {
                 size="small"
                 component="a"
                 target="_blank"
+                onClick={() => {
+                  navigate("/signin");
+                }}
               >
                 Sign in
               </Button>
@@ -95,6 +103,9 @@ function AppAppBar() {
                 size="small"
                 component="a"
                 target="_blank"
+                onClick={() => {
+                  navigate("/signup");
+                }}
               >
                 Sign up
               </Button>
@@ -128,6 +139,9 @@ function AppAppBar() {
                       target="_blank"
                       sx={{ width: "100%" }}
                       startIcon={<ShoppingCartIcon />}
+                      onClick={() => {
+                        navigate("/card");
+                      }}
                     >
                       Card
                     </Button>
@@ -139,6 +153,9 @@ function AppAppBar() {
                       component="a"
                       target="_blank"
                       sx={{ width: "100%" }}
+                      onClick={() => {
+                        navigate("/signup");
+                      }}
                     >
                       Sign up
                     </Button>
@@ -150,6 +167,9 @@ function AppAppBar() {
                       component="a"
                       target="_blank"
                       sx={{ width: "100%" }}
+                      onClick={() => {
+                        navigate("/signin");
+                      }}
                     >
                       Sign in
                     </Button>

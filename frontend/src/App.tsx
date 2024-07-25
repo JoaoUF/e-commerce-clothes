@@ -1,5 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import AppContainer from "./layouts/AppContainer";
+import Card from "./pages/Card";
 import LandingPage from "./pages/LandingPage";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -17,11 +19,15 @@ export default function App() {
         },
         {
           path: "/signin",
-          element: <SignIn />,
+          element: <AppContainer component={<SignIn />} />,
         },
         {
           path: "/signup",
-          element: <SignUp />,
+          element: <AppContainer component={<SignUp />} />,
+        },
+        {
+          path: "/card",
+          element: <AppContainer component={<Card />} />,
         },
         {
           path: "/",

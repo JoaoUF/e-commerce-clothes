@@ -1,8 +1,9 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AppAppBar from "../components/AppAppBar";
+import Baner from "../components/Baner";
 import getLPTheme from "../components/getLPTheme";
 import Hero from "../components/Hero";
+import AppAppBar from "../layouts/AppAppBar";
 
 export default function LandingPage() {
   const LPtheme = createTheme(getLPTheme("light"));
@@ -10,7 +11,7 @@ export default function LandingPage() {
     <ThemeProvider theme={LPtheme}>
       <CssBaseline />
       <AppAppBar />
-      <Hero />
+      <Hero component={<Baner />} />
     </ThemeProvider>
   );
 }

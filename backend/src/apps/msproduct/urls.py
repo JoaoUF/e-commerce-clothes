@@ -17,8 +17,6 @@ urlpatterns = [
     path("price/<uuid:pk>/", views.PriceDetail.as_view()),
     path("product/", views.ProductList.as_view()),
     path("product/<uuid:pk>/", views.ProductDetail.as_view()),
-    path("product-image/", views.ProductImageList.as_view()),
-    path("product-image/<uuid:pk>/", views.ProductImageDetail.as_view()),
     path("size/", views.SizeList.as_view()),
     path("size/<uuid:pk>/", views.SizeDetail.as_view()),
 ]

@@ -1,7 +1,7 @@
 ## doto dev
 
-- [ ] change backend refresh token expiration time?
-- [ ] set up context and security
+- [ ] redirect pages
+- [ ] add card, see items, product page & checkout
 
 ## doto prod
 
