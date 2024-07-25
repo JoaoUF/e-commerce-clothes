@@ -1,10 +1,8 @@
 ## doto dev
 
 - [ ] add other product
-- [ ] call list of product in frontend
 - [ ] add product detail page with add to card or buy button
 - [ ] store card detail in local storage?
-- [ ] change appappbar component with logout button
 - [ ] add signin, signup connection with backend
 
 ## doto prod

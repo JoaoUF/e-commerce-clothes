@@ -1,7 +1,7 @@
 from msproduct.models import Image, Product
 from msproduct.serializers import ImageSerializer, ImageDetailSerializer
 from rest_framework import generics
-from rest_framework.parsers import FileUploadParser
+from rest_framework.permissions import AllowAny
 
 
 class ImageList(generics.ListCreateAPIView):
@@ -15,6 +15,7 @@ class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ImageProductListDetail(generics.ListAPIView):
+    permission_classes = (AllowAny,)
     serializer_class = ImageDetailSerializer
 
     def get_queryset(self):

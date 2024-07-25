@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Baner from "../components/Baner";
 import getLPTheme from "../components/getLPTheme";
 import Hero from "../components/Hero";
+import ListProduct from "../components/ListProduct";
 import AppAppBar from "../layouts/AppAppBar";
 
 export default function LandingPage() {
@@ -12,6 +13,7 @@ export default function LandingPage() {
       <CssBaseline />
       <AppAppBar />
       <Hero component={<Baner />} />
+      <ListProduct />
     </ThemeProvider>
   );
 }

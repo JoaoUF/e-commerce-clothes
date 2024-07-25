@@ -1,12 +1,18 @@
 import { AxiosResponse } from "axios";
 import { UUID } from "crypto";
 import AxiosConfig from "../AxiosConfig";
-import { Image } from "./Image.interface";
+import { Image, ImageProductDetail } from "./Image.interface";
 
 export class ImageService {
   list_images(): Promise<Image[]> {
     return AxiosConfig.get("image/").then(
       (response: AxiosResponse<Image[]>) => response.data
+    );
+  }
+
+  list_product_image_detail(): Promise<ImageProductDetail[]> {
+    return AxiosConfig.get("image-product-detail/").then(
+      (response: AxiosResponse<ImageProductDetail[]>) => response.data
     );
   }
 
