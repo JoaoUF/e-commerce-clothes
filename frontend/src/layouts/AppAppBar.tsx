@@ -11,8 +11,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
 
 function AppAppBar() {
+  let { user, logoutUser }: any = React.useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -85,30 +87,47 @@ function AppAppBar() {
               >
                 Card
               </Button>
-              <Button
-                color="primary"
-                variant="text"
-                size="small"
-                component="a"
-                target="_blank"
-                onClick={() => {
-                  navigate("/signin");
-                }}
-              >
-                Sign in
-              </Button>
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                component="a"
-                target="_blank"
-                onClick={() => {
-                  navigate("/signup");
-                }}
-              >
-                Sign up
-              </Button>
+              {user ? (
+                <Button
+                  color="primary"
+                  variant="text"
+                  size="small"
+                  component="a"
+                  target="_blank"
+                  onClick={() => {
+                    logoutUser();
+                  }}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    color="primary"
+                    variant="text"
+                    size="small"
+                    component="a"
+                    target="_blank"
+                    onClick={() => {
+                      navigate("/signin");
+                    }}
+                  >
+                    Sign in
+                  </Button>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    size="small"
+                    component="a"
+                    target="_blank"
+                    onClick={() => {
+                      navigate("/signup");
+                    }}
+                  >
+                    Sign up
+                  </Button>
+                </>
+              )}
             </Box>
             <Box sx={{ display: { sm: "", md: "none" } }}>
               <Button
@@ -146,34 +165,54 @@ function AppAppBar() {
                       Card
                     </Button>
                   </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      component="a"
-                      target="_blank"
-                      sx={{ width: "100%" }}
-                      onClick={() => {
-                        navigate("/signup");
-                      }}
-                    >
-                      Sign up
-                    </Button>
-                  </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component="a"
-                      target="_blank"
-                      sx={{ width: "100%" }}
-                      onClick={() => {
-                        navigate("/signin");
-                      }}
-                    >
-                      Sign in
-                    </Button>
-                  </MenuItem>
+                  {user ? (
+                    <MenuItem>
+                      <Button
+                        color="primary"
+                        variant="outlined"
+                        component="a"
+                        target="_blank"
+                        sx={{ width: "100%" }}
+                        startIcon={<ShoppingCartIcon />}
+                        onClick={() => {
+                          logoutUser();
+                        }}
+                      >
+                        Card
+                      </Button>
+                    </MenuItem>
+                  ) : (
+                    <>
+                      <MenuItem>
+                        <Button
+                          color="primary"
+                          variant="contained"
+                          component="a"
+                          target="_blank"
+                          sx={{ width: "100%" }}
+                          onClick={() => {
+                            navigate("/signup");
+                          }}
+                        >
+                          Sign up
+                        </Button>
+                      </MenuItem>
+                      <MenuItem>
+                        <Button
+                          color="primary"
+                          variant="outlined"
+                          component="a"
+                          target="_blank"
+                          sx={{ width: "100%" }}
+                          onClick={() => {
+                            navigate("/signin");
+                          }}
+                        >
+                          Sign in
+                        </Button>
+                      </MenuItem>
+                    </>
+                  )}
                 </Box>
               </Drawer>
             </Box>
