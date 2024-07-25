@@ -1,14 +1,22 @@
 ## doto dev
 
-- [ ] redirect pages
-- [ ] add card, see items, product page & checkout
+- [ ] add other product
+- [ ] call list of product in frontend
+- [ ] add product detail page with add to card or buy button
+- [ ] store card detail in local storage?
+- [ ] change appappbar component with logout button
+- [ ] add signin, signup connection with backend
 
 ## doto prod
 
 - [ ] dockerize application
 - [ ] move static file to w3 sockets
 - [ ] add database replication
-- [ ] add github actions
+- [ ] fix github actions
+
+## doto next time
+
+- [ ] read django queryset doc
 
 ## resources
 

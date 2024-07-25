@@ -1,6 +1,7 @@
 from msproduct.models import Image, Product
 from msproduct.serializers import ImageSerializer, ImageDetailSerializer
 from rest_framework import generics
+from rest_framework.parsers import FileUploadParser
 
 
 class ImageList(generics.ListCreateAPIView):
@@ -16,8 +17,10 @@ class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
 class ImageProductListDetail(generics.ListAPIView):
     serializer_class = ImageDetailSerializer
 
-    def get_object(self):
-        list_detail = []
-        for i in Product.objects.all():
-            list_detail.append(Image.objects.filter(id=i.id).first())
-        return list_detail
+    def get_queryset(self):
+        queryset = Image.objects.none()
+        product_uuid_list = Product.objects.values("id")
+        for i in product_uuid_list:
+            instance = Image.objects.filter(product=i["id"]).first()
+            queryset |= Image.objects.filter(id=instance.id)  # type: ignore
+        return queryset

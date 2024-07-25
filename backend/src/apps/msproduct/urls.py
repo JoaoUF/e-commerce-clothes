@@ -8,6 +8,7 @@ urlpatterns = [
     path("color/", views.ColorList.as_view()),
     path("color/<uuid:pk>/", views.ColorDetail.as_view()),
     path("image/", views.ImageList.as_view()),
+    path("image-product-detail/", views.ImageProductListDetail.as_view()),
     path("image/<uuid:pk>/", views.ImageDetail.as_view()),
     path("item/", views.ItemList.as_view()),
     path("item-detail/", views.ItemDetailList.as_view()),

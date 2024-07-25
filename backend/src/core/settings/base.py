@@ -137,6 +137,7 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PARSER_CLASSES": [
         "rest_framework.parsers.JSONParser",
+        "rest_framework.parsers.MultiPartParser",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
@@ -237,7 +238,7 @@ REST_AUTH = {
     "LOGOUT_ON_PASSWORD_CHANGE": False,
     "SESSION_LOGIN": True,
     "USE_JWT": True,
-    "JWT_AUTH_COOKIE": "access-token",
+    # "JWT_AUTH_COOKIE": "access-token",
     "JWT_AUTH_REFRESH_COOKIE": "refresh-token",
     "JWT_AUTH_REFRESH_COOKIE_PATH": "/",
     "JWT_AUTH_SECURE": True,
