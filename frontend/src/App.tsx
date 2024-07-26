@@ -3,6 +3,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import AppContainer from "./layouts/AppContainer";
 import Card from "./pages/Card";
 import LandingPage from "./pages/LandingPage";
+import Product from "./pages/Product";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import PrivateRoute from "./utils/PrivateRoute";
@@ -28,6 +29,10 @@ export default function App() {
         {
           path: "/card",
           element: <AppContainer component={<Card />} />,
+        },
+        {
+          path: "/product/:slug",
+          element: <AppContainer component={<Product />} />,
         },
         {
           path: "/",
