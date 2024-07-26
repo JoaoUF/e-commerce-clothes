@@ -19,7 +19,6 @@ class PriceDetailSerializer(serializers.ModelSerializer):
             "id",
             "color",
             "size",
-            "product",
             "originalPrice",
             "discountPrice",
         ]

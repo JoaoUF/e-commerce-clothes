@@ -4,8 +4,7 @@ from msproduct.serializers import (
     PriceDetailSerializer,
     ImageSerializer,
 )
-from rest_framework import generics
-from rest_framework import filters
+from rest_framework import filters, status, generics
 from rest_framework.views import APIView, Response
 from rest_framework.permissions import AllowAny
 
@@ -27,14 +26,20 @@ class SingleProductDetail(APIView):
     authentication_classes = []
 
     def get(self, request):
-        queryset_price = Price.objects.filter(product=request.GET.get("product"))
-        queryset_image = Image.objects.filter(product=request.GET.get("product"))  # type: ignore
+        try:
+            current_product = Product.objects.get(slug=request.GET.get("product"))
+        except Product.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        queryset_price = Price.objects.filter(product=current_product.id)
+        queryset_image = Image.objects.filter(product=current_product.id)
         data = [
             {
                 "prices": [
                     {**PriceDetailSerializer(price).data} for price in queryset_price  # type: ignore
                 ],
                 "images": [{**ImageSerializer(image).data} for image in queryset_image],  # type: ignore
+                "product": {**ProductSerializer(current_product).data},  # type: ignore
             }
         ]
-        return Response(data)
+        return Response(data, status=status.HTTP_200_OK)
