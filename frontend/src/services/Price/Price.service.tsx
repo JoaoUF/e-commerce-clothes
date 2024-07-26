@@ -1,18 +1,12 @@
 import { AxiosResponse } from "axios";
 import { UUID } from "crypto";
 import AxiosConfig from "../AxiosConfig";
-import { Price, PriceDetail } from "./Price.interface";
+import { Price } from "./Price.interface";
 
 export class PriceService {
   list_prices(): Promise<Price[]> {
     return AxiosConfig.get("price/").then(
       (response: AxiosResponse<Price[]>) => response.data
-    );
-  }
-
-  list_price_detail(pk: UUID): Promise<PriceDetail> {
-    return AxiosConfig.get(`price/?product=${pk}`).then(
-      (response: AxiosResponse<PriceDetail>) => response.data
     );
   }
 

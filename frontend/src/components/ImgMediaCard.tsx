@@ -4,6 +4,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 import { ImageProductDetail } from "../services/Image/Image.interface";
 
 interface ImgMediaCardProps {
@@ -13,6 +14,7 @@ interface ImgMediaCardProps {
 export default function ImgMediaCard({
   imageProductDetail,
 }: ImgMediaCardProps) {
+  let navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -30,7 +32,14 @@ export default function ImgMediaCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button
+          onClick={() => {
+            navigate(`/product/${imageProductDetail.product.slug}`);
+          }}
+          size="small"
+        >
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );
