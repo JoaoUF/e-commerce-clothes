@@ -2,7 +2,7 @@ import { UUID } from "crypto";
 import { Price } from "../Price/Price.interface";
 
 export interface Item {
-  id: UUID;
+  id?: UUID;
   bill: UUID;
   price: UUID;
   quantity: number;

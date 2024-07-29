@@ -2,7 +2,7 @@ import { UUID } from "crypto";
 import { Product } from "../Product/Product.interface";
 
 export interface Image {
-  id: UUID;
+  id?: UUID;
   title: string;
   description: string;
   slug: string;

@@ -1,7 +1,6 @@
 ## doto dev
 
-- [ ] add other product
-- [ ] add product detail page with add to card or buy button
+- [ ] add product number items
 - [ ] store card detail in local storage?
 - [ ] add signin, signup connection with backend
 

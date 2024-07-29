@@ -1,7 +1,7 @@
 import { UUID } from "crypto";
 
 export interface Bill {
-  id: UUID;
+  id?: UUID;
   user: number;
   total: number;
   created: Date;

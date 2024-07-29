@@ -10,11 +10,12 @@ import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 
 function AppAppBar() {
-  let { user, logoutUser }: any = React.useContext(AuthContext);
+  let { user, logoutUser }: any = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 

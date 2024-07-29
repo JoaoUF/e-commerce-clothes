@@ -1,6 +1,6 @@
 import { UUID } from "crypto";
 
 export interface Color {
-  id: UUID;
+  id?: UUID;
   name: string;
 }

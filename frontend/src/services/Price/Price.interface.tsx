@@ -3,7 +3,7 @@ import { Color } from "../Color/Color.interface";
 import { Size } from "../Size/Size.interface";
 
 export interface Price {
-  id: UUID;
+  id?: UUID;
   color: UUID;
   size: UUID;
   product: UUID;

@@ -1,15 +1,23 @@
 import {
   Box,
+  Button,
   Container,
+  FormControl,
   ImageList,
   ImageListItem,
+  InputLabel,
+  MenuItem,
+  Select,
   Stack,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
+import { Item } from "../services/Item/Item.interface";
+import { ItemService } from "../services/Item/Item.service";
 import { PriceDetail } from "../services/Price/Price.interface";
 import { SingleProductDetail } from "../services/Product/Product.interface";
 import { ProductService } from "../services/Product/Product.service";
@@ -60,6 +68,8 @@ interface DisplayProductProps {
 }
 
 function DisplayProduct({ productDetail }: DisplayProductProps) {
+  let { user, card }: any = useContext(AuthContext);
+  let navigate = useNavigate();
   const [availableColors, setAvailableColors] = useState<string[]>(() => {
     let filterColors = new Set<string>();
     for (let color in productDetail.prices) {
@@ -79,6 +89,7 @@ function DisplayProduct({ productDetail }: DisplayProductProps) {
   );
   const [sizeSelected, setSizeSelected] = useState<string>(availableSizes[0]);
   const [priceSelected, SetPriceSelected] = useState<PriceDetail | null>(null);
+  const [quantity, setQuantity] = useState<number>(1);
 
   function filterPrice() {
     let data: PriceDetail = productDetail.prices?.filter(
@@ -88,14 +99,24 @@ function DisplayProduct({ productDetail }: DisplayProductProps) {
     SetPriceSelected(data);
   }
 
+  async function onClickCard() {
+    if (user) {
+      let itemService = new ItemService();
+      let itemData: Item = {
+        bill: card,
+        price: priceSelected!.id,
+        quantity: quantity,
+      };
+      await itemService.create_item(itemData);
+      console.log("added to card");
+    } else {
+      navigate("/signup");
+    }
+  }
+
   useEffect(() => {
     filterPrice();
   }, [colorSelected, sizeSelected]);
-
-  useEffect(() => {
-    console.log("second component effect");
-    console.log(productDetail);
-  }, [productDetail]);
 
   const changeColor = (
     event: React.MouseEvent<HTMLElement>,
@@ -206,6 +227,32 @@ function DisplayProduct({ productDetail }: DisplayProductProps) {
               </ToggleButton>
             ))}
           </ToggleButtonGroup>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={quantity}
+              label="Age"
+              onChange={(e) => {
+                setQuantity(e.target.value as number);
+              }}
+            >
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={6}>6</MenuItem>
+              <MenuItem value={7}>7</MenuItem>
+              <MenuItem value={8}>8</MenuItem>
+              <MenuItem value={9}>9</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+            </Select>
+          </FormControl>
+          <Button variant="contained" color="success">
+            Buy
+          </Button>
         </Stack>
       </Box>
     </Container>

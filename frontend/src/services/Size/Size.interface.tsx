@@ -1,6 +1,6 @@
 import { UUID } from "crypto";
 
 export interface Size {
-  id: UUID;
+  id?: UUID;
   name: string;
 }
