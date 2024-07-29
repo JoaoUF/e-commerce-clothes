@@ -16,7 +16,7 @@ export default function ImgMediaCard({
 }: ImgMediaCardProps) {
   let navigate = useNavigate();
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, height: "minHeight" }}>
       <CardMedia
         component="img"
         alt={imageProductDetail.title}

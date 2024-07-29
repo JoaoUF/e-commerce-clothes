@@ -92,6 +92,11 @@ function DisplayProduct({ productDetail }: DisplayProductProps) {
     filterPrice();
   }, [colorSelected, sizeSelected]);
 
+  useEffect(() => {
+    console.log("second component effect");
+    console.log(productDetail);
+  }, [productDetail]);
+
   const changeColor = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string
@@ -129,9 +134,14 @@ function DisplayProduct({ productDetail }: DisplayProductProps) {
         }}
       >
         <ImageList variant="masonry" cols={3} gap={8}>
-          {productDetail.images?.map((image, index) => (
-            <ImageListItem key={index}>
-              <img src={image.upload} alt={image.title} loading="lazy" />
+          {productDetail.images?.map((image) => (
+            <ImageListItem key={image.upload}>
+              <img
+                srcSet={image.upload}
+                src={`${image.upload}`}
+                alt={image.title}
+                loading="lazy"
+              />
             </ImageListItem>
           ))}
         </ImageList>

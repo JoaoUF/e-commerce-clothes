@@ -1,5 +1,5 @@
 import { UUID } from "crypto";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import {
@@ -49,38 +49,6 @@ export const AuthProvider = () => {
     history("/");
   };
 
-  let updateToken = async () => {
-    try {
-      let authenticationService = new AuthenticationService();
-      authenticationService.refresh_token();
-    } catch (error) {
-      console.log(error);
-      logoutUser();
-    }
-
-    if (loading) {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    console.log("RENICIANDO");
-
-    if (loading) {
-      updateToken();
-    }
-
-    let fiveMinutes = 1000 * 60 * 5;
-
-    let interval = setInterval(() => {
-      if (card) {
-        updateToken();
-      }
-    }, fiveMinutes);
-
-    return () => clearInterval(interval);
-  }, [card, loading]);
-
   let contextProps: ContextProps = {
     user: user,
     card: card,
@@ -90,7 +58,8 @@ export const AuthProvider = () => {
 
   return (
     <AuthContext.Provider value={contextProps}>
-      {loading ? null : <Outlet />}
+      {<Outlet />}
+      {/* {loading ? null : <Outlet />} */}
     </AuthContext.Provider>
   );
 };

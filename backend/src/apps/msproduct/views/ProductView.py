@@ -33,13 +33,12 @@ class SingleProductDetail(APIView):
 
         queryset_price = Price.objects.filter(product=current_product.id)
         queryset_image = Image.objects.filter(product=current_product.id)
-        data = [
-            {
-                "prices": [
-                    {**PriceDetailSerializer(price).data} for price in queryset_price  # type: ignore
-                ],
-                "images": [{**ImageSerializer(image).data} for image in queryset_image],  # type: ignore
-                "product": {**ProductSerializer(current_product).data},  # type: ignore
-            }
-        ]
+        data = {
+            "prices": [
+                {**PriceDetailSerializer(price).data} for price in queryset_price  # type: ignore
+            ],
+            "images": [{**ImageSerializer(image).data} for image in queryset_image],  # type: ignore
+            "product": {**ProductSerializer(current_product).data},  # type: ignore
+        }
+
         return Response(data, status=status.HTTP_200_OK)
