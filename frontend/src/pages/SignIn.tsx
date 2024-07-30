@@ -11,8 +11,14 @@ import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link as RouterLink, useParams } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
+import {
+  SignIn as SignInInterface,
+  VerifyEmail,
+} from "../services/Authentication/Authentication.interface";
+import { AuthenticationService } from "../services/Authentication/Authentication.service";
 
 function Copyright(props: any) {
   return (
@@ -35,14 +41,36 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  let { loginUser }: any = useContext(AuthContext);
+  let { token } = useParams();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const loginInterface: SignInInterface = {
+      email: data.get("email") as string,
+      password: data.get("password") as string,
+    };
+    loginUser(loginInterface);
   };
+
+  useEffect(() => {
+    let fetchData = async () => {
+      try {
+        let authenticationService = new AuthenticationService();
+        let interfaceEmail: VerifyEmail = {
+          key: token as string,
+        };
+        await authenticationService.verify_email(interfaceEmail);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (token) {
+      fetchData();
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={defaultTheme}>

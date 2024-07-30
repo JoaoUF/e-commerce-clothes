@@ -24,7 +24,6 @@ export default AuthContext;
 export const AuthProvider = () => {
   let { card, updateCard, deleteCard } = useLocalStorage();
   let [user, setUser] = useState<number | null>(null);
-  let [loading, setLoading] = useState<boolean>(true);
   const history = useNavigate();
 
   let loginUser = async (data: SignIn) => {
@@ -36,7 +35,7 @@ export const AuthProvider = () => {
         serviceOutput.user.pk
       );
       setUser(serviceOutput.user.pk);
-      updateCard(billOutput.id);
+      updateCard(billOutput.id!);
       history("/");
     } catch (error) {
       console.log(error);

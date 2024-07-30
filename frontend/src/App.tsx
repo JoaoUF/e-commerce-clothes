@@ -20,7 +20,7 @@ export default function App() {
           element: <LandingPage />,
         },
         {
-          path: "/signin",
+          path: "/signin/:token?/",
           element: <AppContainer component={<SignIn />} />,
         },
         {

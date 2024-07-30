@@ -1,5 +1,3 @@
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
@@ -13,6 +11,9 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { SignUp as SignUpInterface } from "../services/Authentication/Authentication.interface";
+import { AuthenticationService } from "../services/Authentication/Authentication.service";
+import { Avatar } from "@mui/material";
 
 function Copyright(props: any) {
   return (
@@ -38,10 +39,23 @@ export default function SignUp() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const signupInterface: SignUpInterface = {
+      email: data.get("email") as string,
+      password1: data.get("password1") as string,
+      password2: data.get("password2") as string,
+    };
+
+    let fetchdata = async () => {
+      try {
+        let authenticationService = new AuthenticationService();
+        await authenticationService.register(signupInterface);
+        console.log("se envio el correo");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchdata();
   };
 
   return (
@@ -83,10 +97,10 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="password1"
                   label="Password"
                   type="password"
-                  id="password"
+                  id="password1"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -94,7 +108,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password2"
-                  label="Password2"
+                  label="Confirm password"
                   type="password"
                   id="password2"
                 />

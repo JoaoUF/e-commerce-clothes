@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useContext } from "react";
+import AuthContext from "../contexts/AuthContext";
 import { AuthenticationService } from "./Authentication/Authentication.service";
 
 const AxiosConfig = axios.create({
@@ -12,6 +14,7 @@ const AxiosConfig = axios.create({
 });
 
 AxiosConfig.interceptors.response.use(null, async (error: any) => {
+  let { logoutUser }: any = useContext(AuthContext);
   error.config.retries = error.config.retries || {
     count: 0,
   };
@@ -26,6 +29,7 @@ AxiosConfig.interceptors.response.use(null, async (error: any) => {
       .refresh_token()
       .then(() => axios.request(originalRequestConfig));
   }
+  // logoutUser();
   return Promise.reject(error);
 });
 

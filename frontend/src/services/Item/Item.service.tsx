@@ -10,9 +10,9 @@ export class ItemService {
     );
   }
 
-  list_item_detail(pk: UUID): Promise<ItemDetail> {
+  list_item_detail(pk: UUID): Promise<ItemDetail[]> {
     return AxiosConfig.get(`item/?bill=${pk}`).then(
-      (response: AxiosResponse<ItemDetail>) => response.data
+      (response: AxiosResponse<ItemDetail[]>) => response.data
     );
   }
 

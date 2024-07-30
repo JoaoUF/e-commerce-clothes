@@ -100,7 +100,7 @@ function DisplayProduct({ productDetail }: DisplayProductProps) {
   }
 
   async function onClickCard() {
-    if (user) {
+    try {
       let itemService = new ItemService();
       let itemData: Item = {
         bill: card,
@@ -109,8 +109,8 @@ function DisplayProduct({ productDetail }: DisplayProductProps) {
       };
       await itemService.create_item(itemData);
       console.log("added to card");
-    } else {
-      navigate("/signup");
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -250,9 +250,27 @@ function DisplayProduct({ productDetail }: DisplayProductProps) {
               <MenuItem value={10}>10</MenuItem>
             </Select>
           </FormControl>
-          <Button variant="contained" color="success">
-            Buy
-          </Button>
+          {user ? (
+            <Button
+              onClick={() => {
+                onClickCard();
+              }}
+              variant="contained"
+              color="success"
+            >
+              Buy
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                navigate("/signin");
+              }}
+              variant="contained"
+              color="success"
+            >
+              SignIn
+            </Button>
+          )}
         </Stack>
       </Box>
     </Container>

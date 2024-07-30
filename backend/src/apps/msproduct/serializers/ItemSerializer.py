@@ -11,5 +11,5 @@ class ItemSerializer(serializers.ModelSerializer):
 class ItemDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ["id", "quantity", "bill", "price"]
-        depth = 1
+        fields = ["id", "quantity", "price"]
+        depth = 2
