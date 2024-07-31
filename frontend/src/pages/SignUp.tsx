@@ -1,3 +1,5 @@
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { Avatar } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
@@ -13,7 +15,6 @@ import * as React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { SignUp as SignUpInterface } from "../services/Authentication/Authentication.interface";
 import { AuthenticationService } from "../services/Authentication/Authentication.service";
-import { Avatar } from "@mui/material";
 
 function Copyright(props: any) {
   return (

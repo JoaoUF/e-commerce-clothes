@@ -14,6 +14,7 @@ const AxiosConfig = axios.create({
 });
 
 AxiosConfig.interceptors.response.use(null, async (error: any) => {
+  console.log(error);
   let { logoutUser }: any = useContext(AuthContext);
   error.config.retries = error.config.retries || {
     count: 0,
