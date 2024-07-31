@@ -9,16 +9,17 @@ export default function ListProduct() {
     null
   );
 
+  let fetchData = async () => {
+    try {
+      let imageService = new ImageService();
+      let imageOutput = await imageService.list_product_image_detail();
+      setListProduct(imageOutput);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    let fetchData = async () => {
-      try {
-        let imageService = new ImageService();
-        let imageOutput = await imageService.list_product_image_detail();
-        setListProduct(imageOutput);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchData();
   }, []);
 
@@ -44,7 +45,7 @@ export default function ListProduct() {
       >
         {listProduct &&
           listProduct?.map((item, index) => (
-            <ImgMediaCard imageProductDetail={item} />
+            <ImgMediaCard key={index} imageProductDetail={item} />
           ))}
       </Stack>
     </Container>

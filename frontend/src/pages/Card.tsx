@@ -78,6 +78,7 @@ function ListItemDetail() {
 
     fetchdata();
   }, []);
+
   return (
     <Stack
       direction="column"
@@ -85,9 +86,11 @@ function ListItemDetail() {
       alignItems="flex-start"
       spacing={2}
     >
-      {listCard?.map((item, key) => (
-        <ItemCard itemDetail={item} />
-      ))}
+      {listCard ? (
+        listCard.map((item, key) => <ItemCard key={key} itemDetail={item} />)
+      ) : (
+        <h1>No hay productos</h1>
+      )}
     </Stack>
   );
 }

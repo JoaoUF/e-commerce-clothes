@@ -17,7 +17,7 @@ export class BillService {
   }
 
   retrieve_bill_zero(user: number): Promise<Bill> {
-    return AxiosConfig.get(`bill/?user=${user}`).then(
+    return AxiosConfig.get(`bill-user/${user}/`).then(
       (response: AxiosResponse<Bill>) => response.data
     );
   }

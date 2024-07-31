@@ -11,7 +11,7 @@ export class ItemService {
   }
 
   list_item_detail(pk: UUID): Promise<ItemDetail[]> {
-    return AxiosConfig.get(`item/?bill=${pk}`).then(
+    return AxiosConfig.get(`item-detail/?bill=${pk}`).then(
       (response: AxiosResponse<ItemDetail[]>) => response.data
     );
   }

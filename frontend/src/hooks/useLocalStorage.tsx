@@ -13,11 +13,10 @@ export const useLocalStorage = () => {
 
   const updateCard = (card_uuid: UUID) => {
     setCard(card_uuid);
-    window.localStorage.setItem("card", JSON.stringify(card));
+    window.localStorage.setItem("card", JSON.stringify(card_uuid));
   };
 
   const deleteCard = () => {
-    setCard(null);
     window.localStorage.removeItem("card");
   };
 

@@ -4,10 +4,10 @@
         {
             "name": "Client/Server",
             "configurations": [
-                "Client",
-                "Server"
+                "Server",
+                "Client"
             ],
-            "stopAll": true
+            "stopAll": true,
         }
     ],
     "configurations": [
@@ -17,6 +17,7 @@
             "request": "launch",
             "type": "node-terminal",
             "cwd": "${workspaceFolder}/frontend/",
+            "preLaunchTask": "Sleepdelay"
         },
         {
             "name": "Server",
