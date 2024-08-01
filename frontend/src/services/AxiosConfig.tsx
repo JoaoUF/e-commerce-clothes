@@ -45,8 +45,4 @@ function shouldRetry(config: any) {
   return config.retries.count < 2;
 }
 
-// check:
-// https://stackoverflow.com/questions/61347944/reactjs-watch-access-token-expiration
-// https://stackoverflow.com/questions/51563821/axios-interceptors-retry-original-request-and-access-original-promise
-
 export default AxiosConfig;

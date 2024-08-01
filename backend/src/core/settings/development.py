@@ -71,23 +71,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfields")
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafields")
 
 # DJANGO REST AUTH
-SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        "APP": {
-            "client_id": os.environ.get("SOCIALACCOUNT_GOOGLE_CLIENT_ID"),
-            "secret": os.environ.get("SOCIALACCOUNT_GOOGLE_CLIENT_ID"),
-            "key": "",
-        },
-        "SCOPE": [
-            "profile",
-            "email",
-        ],
-        "AUTH_PARAMS": {
-            "access_type": "online",
-        },
-        "VERIFIED_EMAIL": True,
-    },
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     "google": {
+#         "APP": {
+#             "client_id": os.environ.get("SOCIALACCOUNT_GOOGLE_CLIENT_ID"),
+#             "secret": os.environ.get("SOCIALACCOUNT_GOOGLE_CLIENT_ID"),
+#             "key": "",
+#         },
+#         "SCOPE": [
+#             "profile",
+#             "email",
+#         ],
+#         "AUTH_PARAMS": {
+#             "access_type": "online",
+#         },
+#         "VERIFIED_EMAIL": True,
+#     },
+# }
 
 # STRIPE
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")

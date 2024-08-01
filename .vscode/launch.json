@@ -24,7 +24,11 @@
             "type": "debugpy",
             "request": "launch",
             "args": [
-                "runserver"
+                "runserver_plus",
+                "--cert-file",
+                "${workspaceFolder}/backend/ssl/cert.pem",
+                "--key-file",
+                "${workspaceFolder}/backend/ssl/key.pem"
             ],
             "django": true,
             "autoStartBrowser": false,

@@ -13,6 +13,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useContext, useEffect } from "react";
 import { Link as RouterLink, useParams } from "react-router-dom";
+import GoogleButton from "../components/GoogleButton";
 import AuthContext from "../contexts/AuthContext";
 import {
   SignIn as SignInInterface,
@@ -128,6 +129,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+            <GoogleButton />
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

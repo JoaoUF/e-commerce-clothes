@@ -13,7 +13,12 @@ from dj_rest_auth.views import (
 )
 from dj_rest_auth.jwt_auth import get_refresh_view
 from rest_framework_simplejwt.views import TokenVerifyView
-from .views import password_reset_confirm_redirect, email_confirm_redirect, GoogleLogin
+from .views import (
+    password_reset_confirm_redirect,
+    email_confirm_redirect,
+    GoogleLoginVersionTwo,
+    GoogleLogin,
+)
 
 urlpatterns = [
     path("register/", RegisterView.as_view(), name="rest_register"),

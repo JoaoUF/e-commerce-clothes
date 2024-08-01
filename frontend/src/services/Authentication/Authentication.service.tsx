@@ -13,6 +13,18 @@ export class AuthenticationService {
     return AxiosConfig.post("register/", data).catch((error) => error.data);
   }
 
+  register_google_token(accessToken: any) {
+    return AxiosConfig.post("google/", {
+      access_token: accessToken,
+    }).then((response) => response.status);
+  }
+
+  register_google_code(code: any) {
+    return AxiosConfig.post("google/", {
+      code: code,
+    }).then((response) => response.status);
+  }
+
   verify_email(data: VerifyEmail) {
     return AxiosConfig.post("verify-email/", data).catch((error) => error.data);
   }

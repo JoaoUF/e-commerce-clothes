@@ -61,7 +61,12 @@ function AppAppBar() {
               }}
             >
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <MenuItem sx={{ py: "6px", px: "12px" }}>
+                <MenuItem
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                  sx={{ py: "6px", px: "12px" }}
+                >
                   <Typography variant="body2" color="text.primary">
                     Home
                   </Typography>
@@ -149,7 +154,20 @@ function AppAppBar() {
                     flexGrow: 1,
                   }}
                 >
-                  <MenuItem>Home</MenuItem>
+                  <MenuItem>
+                    <Button
+                      color="primary"
+                      variant="outlined"
+                      component="a"
+                      target="_blank"
+                      sx={{ width: "100%" }}
+                      onClick={() => {
+                        navigate("/");
+                      }}
+                    >
+                      Home
+                    </Button>
+                  </MenuItem>
                   <Divider />
                   <MenuItem>
                     <Button

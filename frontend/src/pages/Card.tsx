@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 import { ItemDetail } from "../services/Item/Item.interface";
 import { ItemService } from "../services/Item/Item.service";
+import { PaymentService } from "../services/Payment/Payment.service";
 
 const defaultTheme = createTheme();
 
@@ -64,6 +65,27 @@ function NotAuthorized() {
 function ListItemDetail() {
   let { card }: any = useContext(AuthContext);
   const [listCard, setListCard] = useState<ItemDetail[] | null>(null);
+  const [total, setTotal] = useState<number>(0);
+
+  async function onClickBuy() {
+    try {
+      let paymentService = new PaymentService();
+      await paymentService.checkout(card);
+      console.log("se registro la compra");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function updateTotal() {
+    let result = 0;
+    for (let i = 0; i < listCard!.length; i++) {
+      if (listCard) {
+        result += listCard[i].price.discountPrice * listCard[i].quantity;
+      }
+    }
+    setTotal(result);
+  }
 
   useEffect(() => {
     let fetchdata = async () => {
@@ -71,6 +93,7 @@ function ListItemDetail() {
         let itemService = new ItemService();
         let itemOutput = await itemService.list_item_detail(card);
         setListCard(itemOutput);
+        updateTotal();
       } catch (error) {
         console.log(error);
       }
@@ -87,7 +110,21 @@ function ListItemDetail() {
       spacing={2}
     >
       {listCard ? (
-        listCard.map((item, key) => <ItemCard key={key} itemDetail={item} />)
+        [
+          listCard.map((item, key) => <ItemCard key={key} itemDetail={item} />),
+          <Typography variant="h3" gutterBottom>
+            Total: {total}
+          </Typography>,
+          <Button
+            onClick={() => {
+              onClickBuy();
+            }}
+            variant="contained"
+            color="success"
+          >
+            SignIn
+          </Button>,
+        ]
       ) : (
         <h1>No hay productos</h1>
       )}
