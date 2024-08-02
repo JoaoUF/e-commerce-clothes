@@ -41,6 +41,7 @@ Custom authentication with outh2:
 - https://psc42.medium.com/social-login-with-react-and-django-ii-39b8aa20cd27
 - https://medium.com/@michal.drozdze/django-rest-framework-jwt-authentication-social-login-login-with-google-8911332f1008
 - https://medium.com/@azubuinedaniel05/using-dj-rest-auth-for-social-logins-with-drf-in-2023-a09b26ad6ee7
+- https://www.rootstrap.com/blog/how-to-integrate-google-login-in-your-django-rest-api-using-the-dj-rest-auth-library
 
 Honeypot:
 

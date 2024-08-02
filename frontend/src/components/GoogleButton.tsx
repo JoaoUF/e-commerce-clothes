@@ -24,7 +24,6 @@ export default function GoogleButton() {
     <Button
       fullWidth
       onClick={() => loginGoogle()}
-      type="submit"
       variant="contained"
       sx={{ mt: 3, mb: 2 }}
     >

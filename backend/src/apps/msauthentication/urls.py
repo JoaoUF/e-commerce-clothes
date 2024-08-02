@@ -18,6 +18,7 @@ from .views import (
     email_confirm_redirect,
     GoogleLoginVersionTwo,
     GoogleLogin,
+    RedirectView,
 )
 
 urlpatterns = [
@@ -52,5 +53,6 @@ urlpatterns = [
     path("user/", UserDetailsView.as_view(), name="rest_user_details"),
     path("token/verify/", TokenVerifyView.as_view(), name="token_verify"),
     path("token/refresh/", get_refresh_view().as_view(), name="token_refresh"),
-    path("google/", GoogleLogin.as_view(), name="google_login"),
+    path("google/", GoogleLoginVersionTwo.as_view(), name="google_login"),
+    path("~redirect/", RedirectView.as_view(), name="redirect"),
 ]
