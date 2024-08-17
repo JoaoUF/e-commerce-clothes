@@ -4,6 +4,8 @@ psycopg2==2.9.9
 asgiref==3.8.1
 sqlparse==0.5.0
 typing_extensions==4.12.0
+django-debug-toolbar==4.4.2
+django-silk==5.1.0
 drf-yasg==1.21.7
 Werkzeug==3.0.3
 pyOpenSSl==24.2.1

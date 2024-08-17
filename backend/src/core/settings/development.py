@@ -1,20 +1,54 @@
 from .base import *
-from dotenv import load_dotenv, dotenv_values
+from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=os.path.join(ENV_DIR, ".env.development"))
 
+# DJANGO
+
+INSTALLED_APPS += [
+    "drf_yasg",
+    "debug_toolbar",
+    "silk",
+]
+
+MIDDLEWARE += [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "silk.middleware.SilkyMiddleware",
+]
+
 WSGI_APPLICATION = "core.wsgi.development.application"
-DEBUG = bool(int(os.environ.get("DEBUG", "1")))  # type: ignore
-PRODUCTION = int(os.environ.get("PRODUCTION", "0"))  # type: ignore
+DEBUG = True
+PRODUCTION = False
 SECRET_KEY = os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")  # type: ignore
-# CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS").split(" ")  # type: ignore
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS").split(" ")  # type: ignore
 CORS_ALLOW_CREDENTIALS = True
 INTERNAL_IPS = os.environ.get("INTERNAL_IPS").split(" ")  # type: ignore
 HOST_URL_SITE = os.environ.get("HOST_URL_SITE")
+
+# DEGUB TOOLBAR
+# DEFAULT - https://django-debug-toolbar.readthedocs.io/en/latest/configuration.html#debug-toolbar-config
+DEBUG_TOOLBAR_PANELS = [
+    "debug_toolbar.panels.history.HistoryPanel",
+    "debug_toolbar.panels.versions.VersionsPanel",
+    "debug_toolbar.panels.timer.TimerPanel",
+    "debug_toolbar.panels.settings.SettingsPanel",
+    "debug_toolbar.panels.headers.HeadersPanel",
+    "debug_toolbar.panels.request.RequestPanel",
+    "debug_toolbar.panels.sql.SQLPanel",
+    "debug_toolbar.panels.staticfiles.StaticFilesPanel",
+    "debug_toolbar.panels.templates.TemplatesPanel",
+    "debug_toolbar.panels.cache.CachePanel",
+    "debug_toolbar.panels.signals.SignalsPanel",
+    "debug_toolbar.panels.redirects.RedirectsPanel",
+    "debug_toolbar.panels.profiling.ProfilingPanel",
+    "cachalot.panels.CachalotPanel",
+]
+
+# SILKY
+# DEFAULT - https://silk.readthedocs.io/en/latest/configuration.html
+SILKY_AUTHENTICATION = False  # User must login
+SILKY_AUTHORISATION = False  # User must have permissions
 
 # DATABASES
 DATABASES = {
@@ -69,27 +103,3 @@ MEDIA_URL = "/media/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfields")
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafields")
-
-# DJANGO REST AUTH
-# SOCIALACCOUNT_PROVIDERS = {
-#     "google": {
-#         "APP": {
-#             "client_id": os.environ.get("SOCIALACCOUNT_GOOGLE_CLIENT_ID"),
-#             "secret": os.environ.get("SOCIALACCOUNT_GOOGLE_CLIENT_ID"),
-#             "key": "",
-#         },
-#         "SCOPE": [
-#             "profile",
-#             "email",
-#         ],
-#         "AUTH_PARAMS": {
-#             "access_type": "online",
-#         },
-#         "VERIFIED_EMAIL": True,
-#     },
-# }
-
-# STRIPE
-STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
-STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
-stripe.api_key = STRIPE_SECRET_KEY

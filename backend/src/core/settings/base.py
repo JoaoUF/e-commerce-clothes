@@ -32,11 +32,8 @@ THIRD_PARTY_APPS = [
     "rest_framework_simplejwt.token_blacklist",
     "django_filters",
     "django_extensions",
-    "drf_yasg",
     "admin_honeypot",
-    "debug_toolbar",
     "cachalot",
-    "silk",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -65,8 +62,6 @@ DJANGO_MIDDLEWARE = [
 
 THIRD_PARTY_MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "silk.middleware.SilkyMiddleware",
     "allauth.account.middleware.AccountMiddleware",
 ]
 
@@ -192,30 +187,6 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
-
-# DEGUB TOOLBAR
-# DEFAULT - https://django-debug-toolbar.readthedocs.io/en/latest/configuration.html#debug-toolbar-config
-DEBUG_TOOLBAR_PANELS = [
-    "debug_toolbar.panels.history.HistoryPanel",
-    "debug_toolbar.panels.versions.VersionsPanel",
-    "debug_toolbar.panels.timer.TimerPanel",
-    "debug_toolbar.panels.settings.SettingsPanel",
-    "debug_toolbar.panels.headers.HeadersPanel",
-    "debug_toolbar.panels.request.RequestPanel",
-    "debug_toolbar.panels.sql.SQLPanel",
-    "debug_toolbar.panels.staticfiles.StaticFilesPanel",
-    "debug_toolbar.panels.templates.TemplatesPanel",
-    "debug_toolbar.panels.cache.CachePanel",
-    "debug_toolbar.panels.signals.SignalsPanel",
-    "debug_toolbar.panels.redirects.RedirectsPanel",
-    "debug_toolbar.panels.profiling.ProfilingPanel",
-    "cachalot.panels.CachalotPanel",
-]
-
-# SILKY
-# DEFAULT - https://silk.readthedocs.io/en/latest/configuration.html
-SILKY_AUTHENTICATION = True  # User must login
-SILKY_AUTHORISATION = True  # User must have permissions
 
 # DJ REST AUTH
 # DEFAULT - https://dj-rest-auth.readthedocs.io/en/latest/configuration.html

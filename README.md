@@ -1,14 +1,15 @@
-## doto dev
+## todo dev
 
-- [ ] move static file to w3 sockets ?
+- [ ] fix outh2
 
-## doto prod
+## todo prod
 
 - [ ] dockerize application
+- [ ] move static file to w3 sockets
 - [ ] add database replication
 - [ ] fix github actions
 
-## doto next time
+## todo next time
 
 - [ ] read django queryset doc
 - [ ] use other libraries for social login, toolkid to build api's (ninja)
@@ -81,3 +82,9 @@ Slef signed certification with django-extensions:
 - https://stackoverflow.com/questions/70732196/how-to-run-a-django-project-locally-in-pycharm-using-https
 - https://stackoverflow.com/questions/10175812/how-to-generate-a-self-signed-ssl-certificate-using-openssl/10176685#10176685
 - https://timonweb.com/django/https-django-development-server-ssl-certificate/
+
+S3 storage:
+
+- https://medium.com/@abiolaadedayo1993/setting-up-aws-s3-bucket-for-django-image-storage-bcd62758f8ac
+- https://medium.com/@victormagallanes2/integrar-django-con-amazon-s3-ad1b2f94cc3f
+- https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/
