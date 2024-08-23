@@ -1,10 +1,11 @@
 ## todo dev
 
+- [ ] check tests
 - [ ] fix outh2
 
 ## todo prod
 
-- [ ] dockerize application
+- [ ] correct github actions for docker
 - [ ] move static file to w3 sockets
 - [ ] add database replication
 - [ ] fix github actions

@@ -1,9 +1,11 @@
 import pytest
-from .factories import PriceFactory
+from ..factories import PriceFactory
+
 
 @pytest.fixture
 def price_draft():
     return PriceFactory()
+
 
 @pytest.mark.django_db
 def test_name_model(price_draft):
