@@ -15,11 +15,6 @@
 - [ ] use other libraries for social login, toolkid to build api's (ninja)
 - [ ] use poetry
 
-## steps
-
-- create google api credentials
-- create key and cert for https
-
 ## resources
 
 Database replication:
@@ -88,3 +83,10 @@ S3 storage:
 - https://medium.com/@abiolaadedayo1993/setting-up-aws-s3-bucket-for-django-image-storage-bcd62758f8ac
 - https://medium.com/@victormagallanes2/integrar-django-con-amazon-s3-ad1b2f94cc3f
 - https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/
+
+Docker:
+
+- https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
+- https://saasitive.com/tutorial/django-celery-redis-postgres-docker-compose/
+- https://stackoverflow.com/questions/77811302/configuring-rabbitmq-in-dockerfile
+- https://medium.com/@adu013/dockerize-django-rabbitmq-and-celery-in-simple-steps-0bd9582fd8f6

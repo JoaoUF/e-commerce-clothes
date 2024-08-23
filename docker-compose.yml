@@ -1,5 +1,8 @@
 version: "2"
 
+# sudo service apache2 stop
+# sudo systemctl stop rabbitmq-server.service
+
 services:
   nginx:
     restart: always
@@ -15,15 +18,20 @@ services:
     image: redis:7.0.5-alpine
     expose:
       - 6379
+    depends_on:
+      - nginx
 
-  rabbitmq:
-    restart: always
-    image: rabbitmq:latest
-    ports:
-      - 5672:5672
-      - 15672:15672
+  db:
+    image: postgres:13.0-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./backend/src/environment/.env.production
     expose:
-      - 5672
+      - 5432
+    depends_on:
+      - nginx
 
   server:
     restart: unless-stopped
@@ -37,8 +45,22 @@ services:
       - 8000
     env_file:
       - ./backend/src/environment/.env.production
+    depends_on:
+      - db
+      - redis
 
-  worker:
+  rabbitmq:
+    restart: unless-stopped
+    image: rabbitmq:latest
+    env_file:
+      - ./backend/src/environment/.env.production
+    expose:
+      - 5672
+    network_mode: "host"
+    depends_on:
+      - server
+
+  celery:
     restart: unless-stopped
     build:
       context: .
@@ -46,22 +68,10 @@ services:
     entrypoint: /app/docker/backend/worker-entrypoint.sh
     volumes:
       - static_volume:/app/backend/src/mediafields
-    env_file:
-      - ./backend/src/environment/.env.production
     depends_on:
-      - server
-      - redis
-      - rabbitmq
-
-  db:
-    image: postgres:13.0-alpine
-    restart: unless-stopped
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    env_file:
-      - ./backend/src/environment/.env.production
-    expose:
-      - 5432
+      rabbitmq:
+        condition: service_started
+    network_mode: "host"
 
 volumes:
   static_volume: {}

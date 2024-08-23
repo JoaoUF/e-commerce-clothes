@@ -5,5 +5,4 @@ do
     echo "Waiting for server volume..."
 done
 
-# run a worker :)
-celery -A core worker --loglevel=info --concurrency 1 -E
+DJANGO_SETTINGS_MODULE='core.settings.production' celery -A core worker --loglevel=info --concurrency 1 -E

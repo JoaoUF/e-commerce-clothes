@@ -12,7 +12,7 @@ urlpatterns = [
     path("api/v1/", include("apps.mspayment.urls")),
 ]
 
-if settings.PRODUCTION:
+if not settings.PRODUCTION:
     from drf_yasg.views import get_schema_view
     from drf_yasg import openapi
     import debug_toolbar
